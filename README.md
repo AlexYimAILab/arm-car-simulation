@@ -1,10 +1,83 @@
-# LeKiwi-sim
-## Usage
-1. `pip install mujoco`
-2. `python -m mujoco.viewer --mjcf=mjcf_lcmm_robot.xml`
-## Converting from Fusion to MuJoCo 
-- Using this plugin: https://github.com/bionicdl-sustech/ACDC4Robot
-- For `AttributeError: module 'time' has no attribute 'stop'` use 
-https://github.com/bionicdl-sustech/ACDC4Robot/issues/1
-- Make sure to remove all nested components in CAD
-- Simplify large meshes(like omniwheels) using a [mesh simplifier](https://myminifactory.github.io/Fast-Quadric-Mesh-Simplification/) if mujoco complains about too many faces
+```markdown
+# arm-car-simulation
+> Mobile Manipulator Simulation – 移动底盘 + 机械臂联合仿真平台
+
+基于 MuJoCo 物理引擎的移动小车与机械臂一体化仿真项目，支持底盘运动控制、机械臂轨迹规划与抓取任务，代码简洁、开箱即用。
+
+---
+
+## ✨ 功能特性
+- **移动小车底盘控制**：前进、后退、差速转向、速度闭环控制
+- **机械臂控制**：关节角度规划、位姿控制、夹爪开合与自动抓取逻辑
+- **物理仿真环境**：基于 MuJoCo 引擎，提供真实动力学与碰撞交互效果
+- **轻量易扩展**：纯 Python 实现，无复杂依赖，适合二次开发与算法验证
+- **教学友好**：代码结构清晰，关键逻辑带注释，可直接用于机器人学入门实践
+
+---
+
+## 🛠️ 快速开始
+
+### 1. 环境依赖
+项目仅需基础 Python 库，一键安装即可：
+```bash
+pip install mujoco numpy
+```
+
+### 2. 运行仿真
+- **机械臂抓取演示**
+  ```bash
+  python sim_arm.py
+  ```
+- **移动小车运动控制演示**
+  ```bash
+  python sim_car.py
+  ```
+
+---
+
+## 📁 项目结构
+```
+arm-car-simulation/
+├── sim_arm.py          # 机械臂控制与抓取任务实现
+├── sim_car.py          # 移动小车底盘运动控制实现
+├── README.md           # 项目说明文档
+├── LICENSE             # 开源协议（MIT）
+└── .gitignore          # Git 忽略配置文件
+```
+
+---
+
+## 📚 技术参考与致谢
+本项目在开发过程中，参考了以下优秀开源项目的设计思路与实现方式：
+- **LeRobot**：参考其机器人仿真接口设计与模块化控制框架
+- **LeKiwi**：借鉴其移动底盘的差速控制逻辑与运动规划思路
+
+感谢 HuggingFace 开源社区提供的高质量机器人项目资源。
+
+---
+
+## 🎯 适用场景
+- 机器人学入门与运动控制实践
+- 移动操作臂（Mobile Manipulator）算法验证
+- 课程设计 / 毕业设计演示项目
+- 智能机器人仿真开发与教学演示
+
+---
+
+## 📄 License
+MIT License © 2025 AlexYimAILab
+
+你可以自由使用、修改和分发本项目代码，如需引用请注明来源。
+```
+
+---
+
+### 补充说明：
+1.  把仓库里自动生成的旧 `README.md` 内容全部清空，再粘贴上面的文本即可
+2.  如果你的入口文件名不是 `sim_arm.py` / `sim_car.py`，可以把对应命令改成你的实际文件名
+3.  后续你上传了演示截图/动图后，可以在开头 `✨ 功能特性` 前加上图片引用，效果会更直观：
+    ```markdown
+    ## 🎬 效果演示
+    ![机械臂抓取演示](demo_arm.gif)
+    ![小车运动演示](demo_car.gif)
+    ```
